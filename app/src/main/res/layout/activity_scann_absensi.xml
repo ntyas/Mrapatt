@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/latar"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ScannAbsensiActivity">
+
+    <LinearLayout
+        android:layout_marginTop="250dp"
+        android:outlineAmbientShadowColor="@color/colorBlack"
+        android:outlineSpotShadowColor="@color/colorBlack"
+        android:layout_marginHorizontal="15dp"
+        android:paddingHorizontal="20dp"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent" >
+
+        <Button
+            android:fontFamily="@string/zxing_button_ok"
+            android:textStyle="bold"
+            android:textSize="17dp"
+            android:background="@drawable/btn_style"
+            android:text="Keterangan Absensi"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:background="@drawable/input_text_style"
+            android:padding="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:textColor="@color/colorBlack"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:text="NAMA RAPAT"
+                        android:textStyle="bold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:textColor="@color/colorBlack"
+                        android:id="@+id/crl_namaRaker"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:text=": NAMA RAPAT"
+                        android:layout_marginBottom="20dp"/>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:textColor="@color/colorBlack"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:textStyle="bold"
+                        android:text="WAKTU ABSENSI"
+                        />
+                    <TextView
+                        android:textColor="@color/colorBlack"
+                        android:id="@+id/asa_waktuAbsen"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:text=": WAKTU ABSENSI"
+                        />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:textColor="@color/colorBlack"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:textStyle="bold"
+                        android:text="STATUS ABSENSI "
+                        />
+                    <TextView
+                        android:textColor="@color/colorBlack"
+                        android:id="@+id/asa_ketAbsen"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:text=": STATUS ACARA"
+                        />
+                </TableRow>
+
+            </TableLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

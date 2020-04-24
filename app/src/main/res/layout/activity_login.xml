@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/latarlogin"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".LoginActivity">
+
+    <TextView
+        android:layout_marginTop="250dp"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:fontFamily="sans-serif-condensed-light"
+        android:text="LOGIN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:textSize="55dp"
+        android:textAlignment="center"
+        android:fontFamily="@font/judul"
+        android:text="AbsenRapat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/al_nip"
+        android:background="@drawable/input_text_style"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="53dp"
+        android:layout_marginLeft="53dp"
+        android:textSize="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint=" NIP PEGAWAI" />
+    <Button
+        android:layout_marginTop="3dp"
+        android:id="@+id/al_btnSimpan"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp"
+        android:text="MASUK"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>
