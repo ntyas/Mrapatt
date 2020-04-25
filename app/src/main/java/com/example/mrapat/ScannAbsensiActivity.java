@@ -56,7 +56,8 @@ public class ScannAbsensiActivity extends AppCompatActivity {
 
             } else {
                 Toast.makeText(getApplicationContext(), "KAMU TELAH KELUAR DARI QR CODE", Toast.LENGTH_LONG).show();
-                Intent in = new Intent(getApplicationContext(), ListRakerActivity.class);
+//                Intent in = new Intent(getApplicationContext(), ListRakerActivity.class);
+                Intent in = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(in);
                 finish();
             }

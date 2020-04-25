@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
 import com.example.mrapat.Adapter.RakerAdapter;
+import com.example.mrapat.MyLibraryes.AbsensiManager;
 import com.example.mrapat.MyLibraryes.RequestURL;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.accountswitcher.AccountHeader;
@@ -40,13 +41,15 @@ public class ListRakerActivity extends AppCompatActivity {
     private Drawer.Result navigationDrawerLeft;
     private AccountHeader.Result headerNavigationLeft;
     private String nama,nip;
-    private String deviceId = android.provider.Settings.Secure.getString(this.getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
-
+//    private String deviceId = android.provider.Settings.Secure.getString(this.getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+    private String deviceId ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_raker);
+
+        deviceId = AbsensiManager.deviceId(getApplicationContext());
 
         recyclerView = findViewById(R.id.alr_recycleView);
         this.setListAdapterHandler();
