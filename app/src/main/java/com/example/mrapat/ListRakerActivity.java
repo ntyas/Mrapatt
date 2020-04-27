@@ -43,6 +43,8 @@ public class ListRakerActivity extends AppCompatActivity {
     private String nama,nip;
 //    private String deviceId = android.provider.Settings.Secure.getString(this.getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
     private String deviceId ;
+    private Bundle activitySavedInstanceState ;
+    Toolbar toolbar ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,7 @@ public class ListRakerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list_raker);
 
         deviceId = AbsensiManager.deviceId(getApplicationContext());
+        activitySavedInstanceState = savedInstanceState ;
 
         recyclerView = findViewById(R.id.alr_recycleView);
         this.setListAdapterHandler();
@@ -71,33 +74,10 @@ public class ListRakerActivity extends AppCompatActivity {
         });
 
         //Toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //NavigationDrawer
-        headerNavigationLeft = new AccountHeader()
-                .withActivity(this)
-                .withCompactStyle(false)
-                .withSavedInstance(savedInstanceState)
-                .withHeaderBackground(R.drawable.latarr)
-                .addProfiles(
-                        new ProfileDrawerItem().withIcon(String.valueOf(R.drawable.ic_perm_identity_black)).withName(nama).withEmail(nip)
-                )
-                .build();
 
-        navigationDrawerLeft = new Drawer()
-                .withActivity(this)
-                .withToolbar(toolbar)
-                .withDisplayBelowToolbar(false)
-                .withActionBarDrawerToggleAnimated(true)
-                .withDrawerGravity(Gravity.LEFT)
-                .withSavedInstance(savedInstanceState)
-                .withAccountHeader(headerNavigationLeft)
-                .withSliderBackgroundColorRes(R.color.md_grey_200)
-                .withStatusBarColorRes(R.color.md_grey_200)
-                .build();
-
-        navigationDrawerLeft.addItem(new SecondaryDrawerItem().withName("Contact Us for more information -STI-"));
 
         RequestURL requestURL = new RequestURL(this.getApplicationContext(), new RequestURL.MyRequest() {
             @Override
@@ -120,6 +100,31 @@ public class ListRakerActivity extends AppCompatActivity {
 
                 nama = new JSONObject(String.valueOf(response)).getJSONObject("data").getString("nama_pegawai");
                 nip = new JSONObject(String.valueOf(response)).getJSONObject("data").getString("nip_pegawai");
+
+                //NavigationDrawer
+                headerNavigationLeft = new AccountHeader()
+                        .withActivity(ListRakerActivity.this)
+                        .withCompactStyle(false)
+                        .withSavedInstance(activitySavedInstanceState)
+                        .withHeaderBackground(R.drawable.latarr)
+                        .addProfiles(
+                                new ProfileDrawerItem().withIcon(String.valueOf(R.drawable.ic_perm_identity_black)).withName(nama).withEmail(nip)
+                        )
+                        .build();
+
+                navigationDrawerLeft = new Drawer()
+                        .withActivity(ListRakerActivity.this)
+                        .withToolbar(toolbar)
+                        .withDisplayBelowToolbar(false)
+                        .withActionBarDrawerToggleAnimated(true)
+                        .withDrawerGravity(Gravity.LEFT)
+                        .withSavedInstance(activitySavedInstanceState)
+                        .withAccountHeader(headerNavigationLeft)
+                        .withSliderBackgroundColorRes(R.color.md_grey_200)
+                        .withStatusBarColorRes(R.color.md_grey_200)
+                        .build();
+
+                navigationDrawerLeft.addItem(new SecondaryDrawerItem().withName("Contact Us for more information -STI-"));
             }
 
             @Override
