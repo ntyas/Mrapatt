@@ -57,11 +57,15 @@ public class AbsensiManager {
 
             @Override
             public void err(VolleyError error, String dataMsgError) throws JSONException {
-                String err = new JSONObject(dataMsgError).getJSONArray("err").getString(0).toString();
-                String message = new JSONObject(dataMsgError).getJSONArray("msg").getString(0).toString();
-                Toast.makeText(context, err, Toast.LENGTH_LONG).show();
-                Toast.makeText(context, message, Toast.LENGTH_LONG).show();
-                absensi.myError(error, dataMsgError);
+                try {
+                    String err = new JSONObject(dataMsgError).getJSONArray("err").getString(0).toString();
+                    String message = new JSONObject(dataMsgError).getJSONArray("msg").getString(0).toString();
+                    Toast.makeText(context, err, Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+                    absensi.myError(error, dataMsgError);
+                } catch (Exception e) {
+                    Toast.makeText(context, "TIDAK ADA KONEKSI INTERNET", Toast.LENGTH_LONG).show();
+                }
             }
         });
     }

@@ -24,23 +24,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        AbsensiManager.login(this, null, new AbsensiManager.Absensi() {
-            @Override
-            public void myResponse(String data) throws JSONException {
-                String dataListRaker = new JSONObject(data).getJSONObject("data").getJSONArray("raker").toString();
-                Intent in = new Intent(getApplicationContext(), ListRakerActivity.class);
-                in.putExtra(ListRakerActivity.MY_LIST_RAKER_KEY, dataListRaker);
-                startActivity(in);
-                finish();
-            }
+        try {
+            AbsensiManager.login(this, null, new AbsensiManager.Absensi() {
+                @Override
+                public void myResponse(String data) throws JSONException {
+                    String dataListRaker = new JSONObject(data).getJSONObject("data").getJSONArray("raker").toString();
+                    Intent in = new Intent(getApplicationContext(), ListRakerActivity.class);
+                    in.putExtra(ListRakerActivity.MY_LIST_RAKER_KEY, dataListRaker);
+                    startActivity(in);
+                    finish();
+                }
 
-            @Override
-            public void myError(VolleyError err, String msg) {
-                Intent in = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(in);
-                finish();
-            }
-        });
+                @Override
+                public void myError(VolleyError err, String msg) {
+                    Intent in = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(in);
+                    finish();
+                }
+            });
+        } catch (Exception e) {
+
+        }
 
     }
 }
